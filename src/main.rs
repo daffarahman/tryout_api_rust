@@ -1,5 +1,7 @@
-use axum::{Json, Router, response::IntoResponse, routing::get};
-use serde_json::json;
+use axum::{Router, routing::get};
+
+mod handlers;
+use handlers::hello_world;
 
 #[tokio::main]
 async fn main() {
@@ -17,10 +19,3 @@ async fn main() {
 
 }
 
-async fn hello_world() -> impl IntoResponse {
-    let json_response = json!({
-        "status": "ok",
-        "message": "Hello, World!"
-    });
-    Json(json_response)
-}
